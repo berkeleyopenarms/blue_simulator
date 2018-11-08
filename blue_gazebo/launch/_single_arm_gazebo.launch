@@ -1,0 +1,47 @@
+<launch>
+  <arg name="side" doc="Side of the robot: left or right" />
+
+  <group ns="$(arg side)_arm" clear_params="true">
+
+    <!-- Use shared URDF, joint states topic -->
+    <remap
+      from="robot_description"
+      to="/robot_description" />
+    <remap
+      from="joint_states"
+      to="/joint_states" />
+
+    <!-- Load hardware configuration -->
+    <rosparam
+      file="$(find blue_bringup)/config/robot_parameters_$(arg side).yaml"
+      command="load" />
+
+    <!-- Start the control stack -->
+    <!-- http://wiki.ros.org/ros_control -->
+    <include
+      file="$(find blue_bringup)/config/controllers.xml"
+      pass_all_args="true" />
+
+    <node
+      name="$(anon blue_controller_spawner)"
+      pkg="blue_controller_manager"
+      type="spawner.py"
+      output="screen">
+      <rosparam param="start_controllers">
+        - blue_controllers/joint_state_controller
+      </rosparam>
+    </node>
+
+  </group>
+
+  <!-- <node -->
+  <!--   name="$(anon blue_controller_spawner)" -->
+  <!--   pkg="blue_controller_manager" -->
+  <!--   type="spawner.py" -->
+  <!--   output="screen"> -->
+  <!--   <rosparam param="start_controllers" subst_value="true"> -->
+  <!--     - $(arg side)_arm/blue_controllers/joint_state_controller -->
+  <!--   </rosparam> -->
+  <!-- </node> -->
+
+</launch>
