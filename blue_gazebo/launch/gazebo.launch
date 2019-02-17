@@ -1,4 +1,9 @@
 <launch>
+
+  <arg
+    name="version"
+    default="2" />
+
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" default="$(find blue_gazebo)/worlds/empty_world_nograv.world"/>
@@ -13,7 +18,7 @@
   <!-- Convert xacro and put on parameter server -->
   <param
     name="robot_description"
-    command="$(find xacro)/xacro --inorder $(find blue_descriptions)/robots/blue_full.urdf.xacro is_gazebo:=true" />
+    command="$(find xacro)/xacro --inorder $(find blue_descriptions)/robots/blue_full_v$(arg version).urdf.xacro is_gazebo:=true" />
 
   <!-- Spawn a robot into Gazebo -->
   <node

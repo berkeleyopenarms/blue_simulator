@@ -1,4 +1,10 @@
 <launch>
+  <arg
+    name="version"
+    default="2" />
+  <param
+    name="version"
+    value="$(arg version)" />
 
   <remap
     from="/left_arm/joint_states"
@@ -8,7 +14,8 @@
     to="/joint_states" />
 
   <include
-    file="$(find blue_gazebo)/launch/gazebo.launch" />
+    file="$(find blue_gazebo)/launch/gazebo.launch"
+    pass_all_args="true"/>
 
   <include
     file="$(find blue_gazebo)/launch/_single_arm_gazebo.launch">
