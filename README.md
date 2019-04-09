@@ -4,12 +4,12 @@ ROS package for simulating blue
 ### Requirements
 First download the blue_core package in your ROS workspace.
 ```bash
-https://github.com/berkeleyopenrobotics/blue_core.git
+https://github.com/berkeleyopenarms/blue_core.git
 ```
 
 Next you can clone the blue simulator package into your workspace.
 ```bash
-https://github.com/berkeleyopenrobotics/blue_simulator.git
+https://github.com/berkeleyopenarms/blue_simulator.git
 ```
 
 Then navigate to the root of your workspace and run
