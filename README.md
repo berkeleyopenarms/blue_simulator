@@ -52,7 +52,7 @@ stop_controllers:
 strictness: 1"
 ```
 
-You can now publish to the `/right_arm/blue_controllers/joint_ctc/command` topic to control the arm. We like to use ```rqt_ez_publisher```.
+You can now publish to the `/right_arm/blue_controllers/joint_ctc/command` topic to control the arm. We like to use `rqt_ez_publisher`:
 ```
 sudo apt-get install ros-kinetic-rqt-ez-publisher
 rosrun rqt_ez_publisher rqt_ez_publisher
