@@ -20,9 +20,9 @@
     name="robot_description"
     command="$(find xacro)/xacro --inorder $(find blue_descriptions)/robots/blue_full_v$(arg version).urdf.xacro is_gazebo:=true" />
 
-  <!-- Spawn a robot into Gazebo -->
+  <!-- Spawn a Blue Arm into Gazebo -->
   <node
-    name="spawn_urdf"
+    name="spawn_blue"
     pkg="gazebo_ros"
     type="spawn_model"
     args="-param robot_description -urdf -model blue_full"

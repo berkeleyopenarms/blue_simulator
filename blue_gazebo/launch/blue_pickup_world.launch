@@ -15,11 +15,11 @@
 
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="$(find blue_gazebo)/worlds/empty_world_nograv.world"/>
+    <arg name="world_name" default="$(find blue_gazebo)/worlds/pickup.world"/>
   </include>
 
   <include
-    file="$(find blue_gazebo)/launch/gazebo.launch"
+    file="$(find blue_gazebo)/launch/gazebo_pickup.launch"
     pass_all_args="true"/>
 
   <include
