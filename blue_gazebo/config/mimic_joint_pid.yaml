@@ -1,0 +1,32 @@
+# For mimic joint plugin
+gazebo_ros_control:
+  pid_gains:
+    left_l_finger_tip_joint:
+      p: 3.0
+      i: 0.3
+      d: 0.0
+      i_clamp: 1
+      antiwindup: true
+      publish_state: true
+    right_l_finger_tip_joint:
+      p: 3.0
+      i: 0.3
+      d: 0.0
+      i_clamp: 1
+      antiwindup: true
+      publish_state: true
+
+    left_r_finger_tip_joint:
+      p: 3.0
+      i: 0.3
+      d: 0.0
+      i_clamp: 1
+      antiwindup: true
+      publish_state: true
+    right_r_finger_tip_joint:
+      p: 3.0
+      i: 0.3
+      d: 0.0
+      i_clamp: 1
+      antiwindup: true
+      publish_state: true
