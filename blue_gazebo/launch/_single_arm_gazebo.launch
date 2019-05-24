@@ -21,7 +21,7 @@
     <!-- Start the control stack -->
     <!-- http://wiki.ros.org/ros_control -->
     <include
-      file="$(find blue_bringup)/config/controllers.xml"
+      file="$(find blue_bringup)/config/gazebo_controllers.xml"
       pass_all_args="true" />
 
     <node
