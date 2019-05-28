@@ -47,6 +47,29 @@
   </node>
 
   <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
+  <node
+    name="$(anon blue_controller_spawner)"
+    pkg="blue_controller_manager"
+    type="spawner.py"
+    output="screen"
+    ns="right_arm">
+    <rosparam param="start_controllers">
+      - blue_controllers/joint_trajectory_controller
+      - blue_controllers/gripper_controller
+    </rosparam>
+  </node>
+  <node
+    name="$(anon blue_controller_spawner)"
+    pkg="blue_controller_manager"
+    type="spawner.py"
+    output="screen"
+    ns="left_arm">
+    <rosparam param="start_controllers">
+      - blue_controllers/joint_trajectory_controller
+      - blue_controllers/gripper_controller
+    </rosparam>
+  </node>
   <!-- <node name="pos_plot" -->
     <!-- pkg="rqt_plot" -->
     <!-- type="rqt_plot" -->
