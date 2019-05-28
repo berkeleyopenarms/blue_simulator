@@ -2,31 +2,31 @@
 gazebo_ros_control:
   pid_gains:
     left_l_finger_tip_joint:
-      p: 3.0
-      i: 0.3
+      p: 50.0
+      i: 1.0
       d: 0.0
-      i_clamp: 1
+      i_clamp: 100
       antiwindup: true
-      publish_state: true
+      publish_state: false
     right_l_finger_tip_joint:
-      p: 3.0
-      i: 0.3
+      p: 50.0
+      i: 1.0
       d: 0.0
-      i_clamp: 1
+      i_clamp: 100
       antiwindup: true
-      publish_state: true
+      publish_state: false
 
     left_r_finger_tip_joint:
-      p: 3.0
-      i: 0.3
+      p: 50.0
+      i: 1.0
       d: 0.0
-      i_clamp: 1
+      i_clamp: 100
       antiwindup: true
-      publish_state: true
+      publish_state: false
     right_r_finger_tip_joint:
-      p: 3.0
-      i: 0.3
+      p: 50.0
+      i: 1.0
       d: 0.0
-      i_clamp: 1
+      i_clamp: 100
       antiwindup: true
-      publish_state: true
+      publish_state: false
