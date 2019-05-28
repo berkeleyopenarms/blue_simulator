@@ -1,6 +1,8 @@
 <launch>
   <arg name="side" doc="Side of the robot: left or right" />
 
+  <rosparam command="load" file="$(find blue_gazebo)/config/mimic_joint_pid.yaml" />
+
   <group ns="$(arg side)_arm" clear_params="true">
 
     <!-- Use shared URDF, joint states topic -->
@@ -19,7 +21,7 @@
     <!-- Start the control stack -->
     <!-- http://wiki.ros.org/ros_control -->
     <include
-      file="$(find blue_bringup)/config/controllers.xml"
+      file="$(find blue_gazebo)/config/gazebo_controllers.xml"
       pass_all_args="true" />
 
     <node

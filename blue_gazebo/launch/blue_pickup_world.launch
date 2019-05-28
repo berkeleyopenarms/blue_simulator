@@ -15,11 +15,11 @@
 
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="$(find blue_gazebo)/worlds/empty_world_nograv.world"/>
+    <arg name="world_name" default="$(find blue_gazebo)/worlds/pickup.world"/>
   </include>
 
   <include
-    file="$(find blue_gazebo)/launch/gazebo.launch"
+    file="$(find blue_gazebo)/launch/gazebo_pickup.launch"
     pass_all_args="true"/>
 
   <include
@@ -47,6 +47,29 @@
   </node>
 
   <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
+  <node
+    name="$(anon blue_controller_spawner)"
+    pkg="blue_controller_manager"
+    type="spawner.py"
+    output="screen"
+    ns="right_arm">
+    <rosparam param="start_controllers">
+      - blue_controllers/joint_trajectory_controller
+      - blue_controllers/gripper_controller
+    </rosparam>
+  </node>
+  <node
+    name="$(anon blue_controller_spawner)"
+    pkg="blue_controller_manager"
+    type="spawner.py"
+    output="screen"
+    ns="left_arm">
+    <rosparam param="start_controllers">
+      - blue_controllers/joint_trajectory_controller
+      - blue_controllers/gripper_controller
+    </rosparam>
+  </node>
   <!-- <node name="pos_plot" -->
     <!-- pkg="rqt_plot" -->
     <!-- type="rqt_plot" -->
