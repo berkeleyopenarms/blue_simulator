@@ -62,4 +62,4 @@ rosrun rqt_ez_publisher rqt_ez_publisher
 * You can now publish to the topic by dragging the sliders.
 
 ### Notes
-* The gripper can be controlled using the `/(right/left)_arm/blue_controllers/gripper_controller` controller, but the URDF relies on [mimic joints](http://wiki.ros.org/urdf/XML/joint) and currently works only in rviz (not Gazebo). Pull requests welcome :)
+* The gripper can be controlled using the `/(right/left)_arm/blue_controllers/gripper_controller` controller, but the URDF relies on [mimic joints](http://wiki.ros.org/urdf/XML/joint) and though it works on both rviz and Gazebo, will result in crashes in Gazebo if the gripper grasps an object. This is because the mimic joint plugin used to implement mimic joints in Gazebo will exert instantaneous forces which crashes the simulation.
