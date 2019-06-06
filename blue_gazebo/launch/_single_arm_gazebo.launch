@@ -1,7 +1,7 @@
 <launch>
   <arg name="side" doc="Side of the robot: left or right" />
 
-  <rosparam command="load" file="$(find blue_gazebo)/config/mimic_joint_pid.yaml" />
+  <rosparam command="load" file="$(find blue_controllers)/config/gazebo_mimic_joint_pid.yaml" />
 
   <group ns="$(arg side)_arm" clear_params="true">
 
@@ -22,7 +22,7 @@
     <!-- http://wiki.ros.org/ros_control -->
     <rosparam
       param="blue_controllers"
-      file="$(find blue_gazebo)/config/gazebo_controllers.yaml"
+      file="$(find blue_controllers)/config/gazebo_controllers.yaml"
       subst_value="true" />
 
     <node
