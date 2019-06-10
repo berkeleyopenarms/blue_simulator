@@ -10,18 +10,28 @@
     type="static_transform_publisher"
     args="0 0 0 0 0 0 base_link base_footprint 40" />
 
-  <!-- Convert xacro and put on parameter server -->
+  <!-- Spawn Blue Arm -->
   <param
     name="robot_description"
     command="$(find xacro)/xacro --inorder $(find blue_descriptions)/robots/blue_full_v$(arg version).urdf.xacro is_gazebo:=true" />
-
-  <!-- Spawn Blue Arm -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find blue_descriptions)/robots/blue_full_v$(arg version).urdf.xacro is_gazebo:=true" />
-  <node name="spawn_blue" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model blue_full -z 0.965" output="screen"/>
+  <node
+    name="spawn_blue"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-param robot_description -urdf -model blue_full"
+    output="screen"/>
 
   <!-- Spawn a table -->
-  <param name="table_description" command="$(find xacro)/xacro.py $(find blue_gazebo)/objects/table.urdf.xacro" />
-  <node name="spawn_table" pkg="gazebo_ros" type="spawn_model" args="-urdf -param table_description -z 0.01 -x -0.4 -model table_model" respawn="false" output="screen" />
+  <param
+    name="table_description"
+    command="$(find xacro)/xacro.py $(find blue_gazebo)/objects/table.urdf.xacro" />
+  <node
+    name="spawn_table"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -param table_description -z 0.01 -x -0.4 -model table_model"
+    respawn="false"
+    output="screen" />
 
   <!-- Spawn a box -->
   <!-- <param name="box_description" command="$(find xacro)/xacro.py $(find blue_gazebo)/objects/simple_box.urdf" />

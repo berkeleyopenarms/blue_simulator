@@ -4,11 +4,6 @@
     name="version"
     default="2" />
 
-  <include
-    file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="$(find blue_gazebo)/worlds/empty_world_nograv.world"/>
-  </include>
-
   <node
     name="tf_footprint_base"
     pkg="tf"
@@ -19,8 +14,6 @@
   <param
     name="robot_description"
     command="$(find xacro)/xacro --inorder $(find blue_descriptions)/robots/blue_full_v$(arg version).urdf.xacro is_gazebo:=true" />
-
-  <!-- Spawn a Blue Arm into Gazebo -->
   <node
     name="spawn_blue"
     pkg="gazebo_ros"
