@@ -5,7 +5,7 @@
 
 - Install Ubuntu 16.0.4
 - [Install ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
-  - Start from 1.2 to 1.7, just copy paste into terminal 
+  - Start from 1.2 to 1.7, just copy paste into terminal
   - For step 1.4, use Desktop-Full if unsure
 - Create a workspace:
   ```bash
@@ -16,6 +16,12 @@
   git clone https://github.com/berkeleyopenarms/blue_core.git
   git clone https://github.com/berkeleyopenarms/blue_simulator.git
   ```
+- Get the mimic joint plugin:
+  ```bash
+  cd blue_simulator
+  git submodule update --init
+  ```
+
 - Install dependencies:
   ```bash
   cd ~/blue_ws
