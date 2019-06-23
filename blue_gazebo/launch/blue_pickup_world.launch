@@ -2,51 +2,13 @@
   <arg
     name="version"
     default="2" />
-  <param
-    name="version"
-    value="$(arg version)" />
-
-  <remap
-    from="/left_arm/joint_states"
-    to="/joint_states" />
-  <remap
-    from="/right_arm/joint_states"
-    to="/joint_states" />
 
   <include
-    file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="$(find blue_gazebo)/worlds/pickup.world"/>
-  </include>
-
-  <include
-    file="$(find blue_gazebo)/launch/gazebo_pickup.launch"
+    file="$(find blue_gazebo)/launch/blue_world.launch"
     pass_all_args="true"/>
 
   <include
-    file="$(find blue_gazebo)/launch/_single_arm_gazebo.launch">
-    <arg name="side" value="left"/>
-  </include>
-
-  <include
-    file="$(find blue_gazebo)/launch/_single_arm_gazebo.launch">
-    <arg name="side" value="right"/>
-  </include>
-
-  <node
-    name="rviz"
-    pkg="rviz"
-    type="rviz"
-    args="-d $(find blue_bringup)/config/blue.rviz" />
-
-  <node
-    name="robot_state_publisher"
-    pkg="robot_state_publisher"
-    type="robot_state_publisher"
-    respawn="false"
-    output="screen">
-  </node>
-
-  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+    file="$(find blue_gazebo)/launch/_pickup_world_objects.launch" />
 
   <node
     name="$(anon blue_controller_spawner)"
