@@ -1,0 +1,11 @@
+<launch>
+  <arg name="version" default="2" doc="What version of the Blue arm hardware are we using? (1 or 2)" />
+  <arg name="rosbridge_port" default="9090" doc="Port for rosbridge and the Python API" />
+
+  <include
+    file="$(find blue_gazebo)/launch/include/run.launch.xml">
+    <arg name="configuration" value="full" />
+    <arg name="version" value="$(arg version)" />
+    <arg name="rosbridge_port" value="$(arg rosbridge_port)" />
+  </include>
+</launch>
