@@ -40,7 +40,7 @@
 ### Instructions for use
 To launch the simulator (and rviz):
 ```bash
-roslaunch blue_gazebo blue_world.launch
+roslaunch blue_gazebo full.launch
 ```
 
 To load the joint computed torque controller for the right arm:
