@@ -3,27 +3,21 @@
   <!-- What kind of robot am I? -->
   <arg name="configuration" default="full" doc="left, right, or full" />
   <arg name="version" default="2" doc="1 or 2" />
-  <param
-    name="version"
-    value="$(arg version)" />
 
   <arg name="rosbridge_port" default="9090" doc="port for rosbridge_server" />
 
+  <!-- Launch Gazebo-->
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" default="$(find blue_gazebo)/worlds/empty_world.world"/>
   </include>
 
-  <node
-    name="tf_footprint_base"
-    pkg="tf"
-    type="static_transform_publisher"
-    args="0 0 0 0 0 0 base_link base_footprint 40" />
-
   <!-- Load URDF -->
   <param
     name="robot_description"
     command="$(find xacro)/xacro --inorder $(find blue_descriptions)/robots/blue_full_v$(arg version).urdf.xacro is_gazebo:=true" />
+
+  <!-- Spawn robot in Gazebo-->
   <node
     name="spawn_blue"
     pkg="gazebo_ros"
@@ -32,18 +26,19 @@
     output="screen"/>
 
 
+  <!-- Run core control stack -->
   <include
     file="$(find blue_gazebo)/launch/include/single_arm_gazebo.launch.xml"
     if="$(eval configuration == 'right' or configuration == 'full')">
     <arg name="side" value="right"/>
   </include>
-
   <include
     file="$(find blue_gazebo)/launch/include/single_arm_gazebo.launch.xml"
     if="$(eval configuration == 'left' or configuration == 'full')">
     <arg name="side" value="left"/>
   </include>
 
+  <!-- Compute forward kinematics and broadcast via tf -->
   <node
     name="robot_state_publisher"
     pkg="robot_state_publisher"
@@ -52,6 +47,7 @@
     output="screen">
   </node>
 
+  <!-- Support external applications via rosbridge -->
   <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" >
     <arg name="port" value="$(arg rosbridge_port)" />
   </include>

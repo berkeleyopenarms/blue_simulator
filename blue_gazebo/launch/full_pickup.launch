@@ -2,10 +2,12 @@
   <arg name="version" default="2" doc="What version of the Blue arm hardware are we using? (1 or 2)" />
   <arg name="rosbridge_port" default="9090" doc="Port for rosbridge and the Python API" />
 
+  <!-- Spawn Blue -->
   <include
     file="$(find blue_gazebo)/launch/full.launch"
     pass_all_args="true"/>
 
+  <!-- Spawn objects in pickup world -->
   <include
     file="$(find blue_gazebo)/launch/include/pickup_world_objects.launch" />
 
