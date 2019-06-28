@@ -35,6 +35,13 @@
       </rosparam>
     </node>
 
+    <!-- Inverse kinematics service -->
+    <node
+      name="ik_service"
+      pkg="blue_bringup"
+      type="inverse_kinematics_service.py"
+      output="screen" />
+
   </group>
 
 </launch>
