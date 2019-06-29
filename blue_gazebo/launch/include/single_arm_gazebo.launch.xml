@@ -5,13 +5,10 @@
 
   <group ns="$(arg side)_arm" clear_params="true">
 
-    <!-- Use shared URDF, joint states topic -->
+    <!-- Use shared URDF -->
     <remap
       from="robot_description"
       to="/robot_description" />
-    <remap
-      from="joint_states"
-      to="/joint_states" />
 
     <!-- Load hardware configuration -->
     <rosparam

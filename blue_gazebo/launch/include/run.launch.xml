@@ -6,6 +6,14 @@
 
   <arg name="rosbridge_port" default="9090" doc="port for rosbridge_server" />
 
+  <!-- joint states topic -->
+  <remap
+    from="/right_arm/joint_states"
+    to="/joint_states" />
+  <remap
+    from="/left_arm/joint_states"
+    to="/joint_states" />
+
   <!-- Launch Gazebo-->
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch">
