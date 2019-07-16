@@ -38,34 +38,15 @@
   ```
 
 ### Instructions for use
-To launch the simulator (and rviz):
+To launch the simulator (`full.launch` corresponds to the full, two-arm setup; `right.launch` or `left.launch` can also be used):
 ```bash
 roslaunch blue_gazebo full.launch
 ```
 
-To load the joint computed torque controller for the right arm:
+Running rviz afterwards is the same as with the physical robot:
 ```bash
-rosservice call /right_arm/controller_manager/load_controller "blue_controllers/joint_ctc"
+roslaunch blue_bringup rviz.launch
 ```
-
-You can then switch to using the joint computed torque controller:
-
-```bash
-rosservice call /right_arm/controller_manager/switch_controller "start_controllers:
-- 'blue_controllers/joint_ctc'
-stop_controllers:
-- ''
-strictness: 1"
-```
-
-You can now publish to the `/right_arm/blue_controllers/joint_ctc/command` topic to control the arm. We like to use `rqt_ez_publisher`:
-```
-sudo apt-get install ros-kinetic-rqt-ez-publisher
-rosrun rqt_ez_publisher rqt_ez_publisher
-```
-* Select the `/right_arm/blue_controllers/joint_ctc/command` topic.
-* Add data[*] to the topic until you have a total of seven (should be up to data[6]).
-* You can now publish to the topic by dragging the sliders.
 
 ### Notes
-* The gripper can be controlled using the `/(right/left)_arm/blue_controllers/gripper_controller` controller, but the URDF relies on [mimic joints](http://wiki.ros.org/urdf/XML/joint) and though it works on both rviz and Gazebo, will result in crashes in Gazebo if the gripper grasps an object. This is because the mimic joint plugin used to implement mimic joints in Gazebo will exert instantaneous forces which crashes the simulation.
+* The gripper can be controlled using the `/(right/left)_arm/blue_controllers/gripper_controller` controller, but the URDF currently relies on [mimic joints](http://wiki.ros.org/urdf/XML/joint) and will cause Gazebo to crash if the gripper grasps an object. This is because the mimic joint plugin used to implement mimic joints in Gazebo will exert instantaneous forces which crashes the simulation.
