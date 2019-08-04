@@ -9,7 +9,7 @@
 
   <!-- Spawn objects in pickup world -->
   <include
-    file="$(find blue_gazebo)/launch/include/pickup_world_objects.launch" />
+    file="$(find blue_gazebo)/launch/include/_pickup_world_objects.launch" />
 
   <node
     name="$(anon blue_controller_spawner)"
